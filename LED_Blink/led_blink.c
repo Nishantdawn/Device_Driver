@@ -19,11 +19,11 @@ for (i = 0; i < 5; i++)
 /* Pulling the Tx line low */
 data |= UART_LCR_SBC;
 outb(data, SERIAL_PORT_BASE + UART_LCR);
-msleep(500);
+msleep(2000);
 /* Defaulting the Tx line high */
 data &= ~UART_LCR_SBC;
 outb(data, SERIAL_PORT_BASE + UART_LCR);
-msleep(500);
+msleep(2000);
 }
 return 0;
 }
