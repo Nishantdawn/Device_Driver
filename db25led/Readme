@@ -1,0 +1,9 @@
+make
+sudo insmod db9led.ko
+sudo chmod 0666 /dev/serial_led*
+./read
+./write 1
+./read
+./write 0
+./read
+sudo rmmod db9led

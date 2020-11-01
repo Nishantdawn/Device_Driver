@@ -7,3 +7,19 @@ sudo chmod 0666 /dev/serial_led*
 ./write 0
 ./read
 sudo rmmod db9led
+
+
+
+
+
+Using sudo:
+
+    Edit the /etc/modules file and add the name of the module (without the .ko extension) on its own line. 
+    On boot, the kernel will try to load all the modules named in this file.
+    
+    Copy the module to a suitable folder in /lib/modules/`uname -r`/kernel/drivers. 
+    In my case this was /lib/modules/`uname -r`/kernel/drivers/pci. This will place the module in modprobe's database.
+
+    Run depmod. This will find all the dependencies of your module.
+    At this point, I rebooted and then run lsmod | grep module-name to confirm that the module was loaded at boot.
+See the man pages for modprobe, lsmod, and depmod for more information.
