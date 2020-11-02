@@ -7,10 +7,10 @@
 
 static dev_t first;
 
-static int __init ofcd_init(void)
+static int __init ccd_init(void)
 {
-printk(KERN_INFO "Namaskar: ofcd registered");
-if (alloc_chrdev_region(&first, 0, 3, "Shweta") < 0)
+printk(KERN_INFO "Char Device Driver registered");
+if (alloc_chrdev_region(&first, 0, 3, "char_dd") < 0)
 {
 return -1;
 }
@@ -18,15 +18,15 @@ printk(KERN_INFO "<Major, Minor>: <%d, %d>\n", MAJOR(first), MINOR(first));
 return 0;
 }
 
-static void __exit ofcd_exit(void)
+static void __exit ccd_exit(void)
 {
 unregister_chrdev_region(first, 3);
-printk(KERN_INFO "Alvida: ofcd unregistered");
+printk(KERN_INFO "Char Device Driver unregistered");
 }
 
-module_init(ofcd_init);
-module_exit(ofcd_exit);
+module_init(ccd_init);
+module_exit(ccd_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Anil Kumar Pugalia <email_at_sarika-pugs_dot_com>");
-MODULE_DESCRIPTION("Our First Character Driver");
+MODULE_AUTHOR("Nishant Kumar<nishantdawn01@gmail.com>");
+MODULE_DESCRIPTION("First Character Driver Example");
